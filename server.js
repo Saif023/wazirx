@@ -35,7 +35,7 @@ const cryptoSchema = new mongoose.Schema({
 const Crypto = mongoose.model("Crypto", cryptoSchema);
 
 // Fetch Data from WazirX API
-// Fetch Data from WazirX API
+
 async function fetchDataFromAPI() {
   try {
     const response = await axios.get("https://api.wazirx.com/api/v2/tickers");
@@ -74,8 +74,7 @@ app.get("/crypto", async (req, res) => {
   }
 });
 
-// Schedule data update every 5 minutes
-// setInterval(storeDataInDB, 5 * 60 * 1000);
+
 
 // Start the server
 app.listen(PORT, () => {
