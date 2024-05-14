@@ -1,0 +1,71 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crypto Data</title>
+  </head>
+  <body>
+    <h1>Crypto Data</h1>
+    <div id="cryptoData"></div>
+
+    <script>
+      // Fetch data from server
+      fetch("http://localhost:3000/crypto")
+        .then((response) => response.json())
+        .then((data) => {
+          const cryptoDataElement = document.getElementById("cryptoData");
+          data.forEach((item) => {
+            const cryptoInfo = `
+          <div>
+            <h2>${item.name}</h2>
+            <p>Last: ${item.last}</p>
+            <p>Buy: ${item.buy}</p>
+            <p>Sell: ${item.sell}</p>
+            <p>Volume: ${item.volume}</p>
+            <p>Base Unit: ${item.base_unit}</p>
+          </div>
+        `;
+            cryptoDataElement.insertAdjacentHTML("beforeend", cryptoInfo);
+          });
+        })
+        .catch((error) => console.error("Error fetching crypto data:", error));
+    </script>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crypto Data</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Crypto Data</h1>
+    <div class="crypto-container" id="cryptoData"></div>
+
+    <script>
+      fetch("http://localhost:3000/crypto")
+        .then((response) => response.json())
+        .then((data) => {
+          const cryptoDataElement = document.getElementById("cryptoData");
+          data.forEach((item) => {
+            const cryptoItem = document.createElement("div");
+            cryptoItem.classList.add("crypto-item");
+            cryptoItem.innerHTML = `
+            <h2>${item.name}</h2>
+            <p>Last: ${item.last}</p>
+            <p>Buy: ${item.buy}</p>
+            <p>Sell: ${item.sell}</p>
+            <p>Volume: ${item.volume}</p>
+            <p>Base Unit: ${item.base_unit}</p>
+          `;
+            cryptoDataElement.appendChild(cryptoItem);
+          });
+        })
+        .catch((error) => console.error("Error fetching crypto data:", error));
+    </script>
+  </body>
+</html>
